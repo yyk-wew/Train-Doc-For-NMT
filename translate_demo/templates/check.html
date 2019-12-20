@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+ 
+<!-- viewport meta to reset iPhone inital scale -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    font-family:sans-serif;
+}
+#main{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:0.5%;
+}
+#nav-left {
+    line-height:2%;
+    background-color:#eeeeee;
+    height:100%;
+    width:38%;
+    float:left;
+    padding:2%;
+}
+#mid {
+    width:12%;
+    float:left;
+    background-color:#eeeeee;	
+    height:100%;
+    padding:2%;
+}
+#nav-right {
+    line-height:2%;
+    background-color:#eeeeee;
+    height:100%;
+    width:38%;
+    float:right;
+    padding:2%;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:0.5%;
+}
+#answer {
+    text-align: center;
+    width: 98%;
+    height: 5%;
+    font-size: 1.5vw;
+    float:left;
+}
+</style>
+</head>
+
+<body style="width: 100%;height: 93%;position: absolute;margin:0 auto;">
+
+<div id="main" overflow-y:auto;>
+
+    <div id="header">
+    <h1 style="font-size: 3vw;">翻译demo</h1>
+    </div>
+
+    <form method="POST" action="" style="height:80%;"> {% csrf_token %}
+        <div id="nav-left">
+            <h1 style="font-size: 20px;">待翻译语句</h1>
+            <textarea id="code2" name="code1" placeholder="请在此处输入需要翻译的内容"" type="text" style="resize:none;width: 100%;height: 95%;font-size: 2vw;" >{{code1}}</textarea>
+        </div>
+
+        <div id="nav-right">
+            <h1 style="font-size: 20px;">翻译结果</h1>
+            <textarea id="code1" name="code2" placeholder="" type="text" style="resize:none;width: 100%;height: 95%;font-size: 2vw;" >{{code2}}</textarea>
+        </div>
+
+        <div id="mid">
+            <button name="reset" value="reset" type="submit" style="font-color:#000000;margin-top: 100%;width: 100%;height: 6%;font-size: 1.5vw;">重置</button>
+            <button name="submit" value="submit" style="margin-top: 15%;width: 100%;height: 6%;font-size: 1.5vw;" type="submit">翻译</button><br><br><br>
+            <span id="answer">{{answer}}</span>
+        </div>
+
+    </form>
+
+    <div id="footer">
+    Copyright @ ZJU-YHZtranslation
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -321,6 +321,28 @@ subword-nmt apply-bpe -i input.txt -c code.file -o output.txt
 
 ## 模型结果演示
 
-在训练好模型之后，写了一个简单的前端demo以方便对结果进行测试，demo的代码在项目`/demo`目录下。
+在训练好模型之后，写了一个简单的前端demo以方便对结果进行测试，demo的代码在项目`/translate_demo`目录下。
+
+如要运行，需要配置`django`环境。配置好后将模型训练结果和模型训练源数据放在`manage.py`同级目录下，并对`/similar/translate_with_model.py`进行如下修改：
+
+```python
+# original code
+val = os.system('python -m nmt.nmt \
+                 --out_dir=./enzh_gnmt_singleword \
+                 --inference_input_file=./input.txt \
+                 --inference_output_file=./output.txt')
+```
+
+将上述代码中的`out_dir`修改为模型训练结果路径即可。
+
+运行前端框架命令：
+
+```bash
+python manage.py runserver 8000
+```
+
+之后在浏览器端访问`xxx.xxx.xxx.xxx:8000/index`就可以看到前端页面了，xxx替换为服务器IP地址，例如本机就替换为`127.0.0.1:8000/index`。
+
+在demo中可同时进行多句话的翻译，不同句之间用回车换行分隔。演示实例如下：
 
 ![1576734720035](https://github.com/Lor-na/Train-Doc-For-NMT/blob/master/images/1576734720035.png?raw=true)
